@@ -20,8 +20,6 @@
 
     <p>
         Posted: {{$project->created_at->format('M j, Y')}}
-        <br>
-        Type: {{$project->type->title}}
     </p>
 
     <a href="/">Back to Home</a>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Projects;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\ProjectsController;
