@@ -1,8 +1,10 @@
 <?php
 
+
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,7 +27,6 @@ Route::get('/projects', function(){
     foreach($projects as $key => $project)
     {
         $projects[$key]['user'] = User::where('id', $project['user_id'])->first();
-        $projects[$key]['type'] = Type::where('id', $project['type_id'])->first();
 
         if($project['image'])
         {
@@ -40,7 +41,6 @@ Route::get('/projects', function(){
 Route::get('/projects/profile/{project?}', function(Project $project){
 
     $project['user'] = User::where('id', $project['user_id'])->first();
-    $project['type'] = Type::where('id', $project['type_id'])->first();
 
     if($project['image'])
     {

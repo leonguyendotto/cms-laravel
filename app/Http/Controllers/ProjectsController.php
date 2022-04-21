@@ -103,8 +103,11 @@ class ProjectsController extends Controller
         $attributes = request()->validate([
             'image' => 'required|image',
         ]);
-
-        Storage::delete($project->image);
+        
+        if ($project->image){
+            Storage::delete($project->image);
+        }
+        
         
         $path = request()->file('image')->store('projects');
 
