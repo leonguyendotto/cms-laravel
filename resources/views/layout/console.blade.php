@@ -15,17 +15,21 @@
     </head>
     <body class="antialiased">
 
-        <h1>CMS Admin Console</h1>
+    <header class="w3-padding">
+
+        <h1 class="w3-text-red">Portfolio Console</h1>
 
         @if (Auth::check())
-            You are logged in as {{auth()->user()->first}} |
-            <a href="/console/logout">Logout</a> |
-            <a href="/console/dashboard">Dashboard</a> |
-            <a href="/">Website Homepage </a>
+            You are logged in as {{auth()->user()->first}} {{auth()->user()->last}} |
+            <a href="/console/logout">Log Out</a> | 
+            <a href="/console/dashboard">Dashboard</a> | 
+            <a href="/">Website Home Page</a>
         @else
-            You are not logged in
-            <a href="/">Return to my Portfolio</a>
+            <a href="/">Return to My Portfolio</a>
         @endif
+
+    </header>
+
 
 
         <hr>

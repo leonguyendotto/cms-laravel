@@ -5,6 +5,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Skill;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -50,3 +51,34 @@ Route::get('/projects/profile/{project?}', function(Project $project){
     return $project;
 
 });
+
+Route::get('/skills', function(){
+
+    $skills = Skill::orderBy('created_at')->get();
+  
+    foreach($skills as $key => $skill)
+    {
+        $skills[$key]['user'] = User::where('id', $skill['user_id'])->first();
+  
+        if($skill['image'])
+        {
+            $skills[$key]['image'] = env('APP_URL').'storage/'.$skill['image'];
+        }
+    }
+  
+    return $skills;
+  
+  });
+  
+Route::get('/skills/profile/{skill?}', function(Skill $skill){
+  
+    $project['user'] = User::where('id', $skill['user_id'])->first();
+  
+    if($skill['image'])
+    {
+        $skill['image'] = env('APP_URL').'storage/'.$skill['image'];
+    }
+  
+    return $skill;
+  
+  });
